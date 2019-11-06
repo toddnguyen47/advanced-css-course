@@ -8,12 +8,16 @@ Dark green: #28b485
 */
 
 /* Basic Reset */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
+  box-sizing: inherit;
+}
 
-  /* Borders and padding are no longer added to the height and width of an elem */
-  box-sizing: border-box;
+html {
+  font-size: 62.5%; /* Browser default is 16px. 10px / 16px = 62.5% */
 }
 
 /* Font using INHERITANCE 
@@ -22,12 +26,15 @@ Dark green: #28b485
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 1.6rem; */
   color: #777;
   line-height: 1.7;
 
   /* No inheritance */
-  padding: 30px;
+  padding: 3rem;
+
+  /* Borders and padding are no longer added to the height and width of an elem */
+  box-sizing: border-box;
 }
 
 .header {
@@ -57,12 +64,12 @@ body {
   position: absolute;
   
   /* These positions are obtained from the parent element that has its position set to `relative` */
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
 }
 
 /* 
@@ -84,7 +91,7 @@ body {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 
   /* Removes the shakiness of the animation */
   backface-visibility: hidden;
@@ -97,9 +104,9 @@ body {
  */
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: moveInLeft;
   animation-duration: 1s;
@@ -110,9 +117,9 @@ body {
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.75rem;
   animation: moveInRight 1s ease-in;
 }
 
@@ -121,12 +128,12 @@ body {
   /* Before the animations starts */
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
 
   /* Move to the right a little bit before 100%*/
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 
   /* Final state */
@@ -142,12 +149,12 @@ body {
   /* Before the animations starts */
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
 
   /* Move to the right a little bit before 100%*/
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   /* Final state */
@@ -163,7 +170,7 @@ body {
   /* Before the animations starts */
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
 
   /* Final state */
@@ -180,31 +187,32 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  font-size: 1.6rem;
+  padding: 1.5rem 4rem;
   /* Rounded corner */
-  border-radius: 100px;
+  border-radius: 10rem;
   /* Always use `display: inline-block` or `display: block`
    if you want to add some padding or width to an element */ 
   /* inline-block is treated as text */
   display: inline-block;
 
   /* transition HAS to be in the initial state! */
-  transition: all 0.2s;
+  transition: all .2s;
 
   position: relative;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-.3rem);
   /* box-shadow: x y blur color */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 /* Relative to the INITIAL LINK state */
 .btn:active {
-  transform: translateY(-1px);
+  transform: translateY(-.1rem);
   /* box-shadow: x y blur color */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -220,7 +228,7 @@ body {
 
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
 
   /* Put the after element behind the button. `absolute` positioning requires `relative` for its parent */
   position: absolute;
@@ -228,7 +236,7 @@ body {
   left: 0;
   z-index: -1;
 
-  transition: all 0.2s;
+  transition: all .2s;
 }
 
 .btn-white::after {
@@ -241,8 +249,8 @@ body {
 }
 
 .btn-animated {
-  animation: moveInBottom 0.2s ease-out;
-  animation-delay: 0.75s;
+  animation: moveInBottom .2s ease-out;
+  animation-delay: .75s;
   /* 0% will bet set BEFORE the animation starts */
   animation-fill-mode: backwards;
 }
