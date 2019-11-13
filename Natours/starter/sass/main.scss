@@ -1,14 +1,24 @@
+// Variables
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+$color-gray-dark: #777;
+$color-gray-white: #fff;
+
+
 /* Basic Reset */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
+
 
 html {
-  font-size: 62.5%;
-  /* Browser default is 16px. (10px / 16px) = 62.5% */ }
+  font-size: 62.5%; /* Browser default is 16px. (10px / 16px) = 62.5% */
+}
 
 /* Font using INHERITANCE 
  * Font-family will get inherited by all elements in the body
@@ -17,35 +27,51 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /* font-size: 1.6rem; */
-  color: #777;
+  color: $color-gray-dark;
   line-height: 1.7;
+
   /* No inheritance */
   padding: 3rem;
+
   /* Borders and padding are no longer added to the height and width of an elem */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   /* 95% of the viewport height */
   height: 95vh;
   /* 2 background image: [a] linear gradient stays on top of [b] the hero picture */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-image:
+    linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8),
+    ),
+    url("../img/hero.jpg");
   /* `cover` always tries to fit the element inside of the viewport */
   background-size: cover;
-  /* top of the image always stays at the top of the container */
+  /* top of the image always stays at the top of the container */ 
   background-position: top;
+
   /* Clipping the bg image. Top Left, Top Right, Bot Right, Bot Left */
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
   /* So child elements can use `top`, `left`, etc., properties */
-  position: relative; }
+  position: relative;
+}
+
 
 .header__logo-box {
   position: absolute;
+  
   /* These positions are obtained from the parent element that has its position set to `relative` */
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 /* 
  * Center REGARDLESES of viewport width and height
@@ -55,17 +81,22 @@ body {
   position: absolute;
   top: 40%;
   left: 50%;
+  
   /* transform translate() are relative to the CURRENT element */
   /* translate the element 50% to the top, and 50% to the left */
   transform: translate(-50%, -50%);
-  text-align: center; }
+
+  text-align: center;
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-gray-white;
   text-transform: uppercase;
   margin-bottom: 6rem;
+
   /* Removes the shakiness of the animation */
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+}
 
 /*
  * Block elements:
@@ -77,60 +108,80 @@ body {
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
+
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-in;
   /* animation-iteration-count: 3; */
-  /* animation-delay: 3s; */ }
+  /* animation-delay: 3s; */
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-in; }
+  animation: moveInRight 1s ease-in;
+}
 
 /* Browsers are optimzed for `opacity` and `transform` only! */
 @keyframes moveInLeft {
   /* Before the animations starts */
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
+
   /* Move to the right a little bit before 100%*/
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
+
   /* Final state */
   100% {
     opacity: 100;
     /* translate(0) means it's going to look how it looks without any animations */
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /* Browsers are optimzed for `opacity` and `transform` only! */
 @keyframes moveInRight {
   /* Before the animations starts */
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
+
   /* Move to the right a little bit before 100%*/
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
+
   /* Final state */
   100% {
     opacity: 100;
     /* translate(0) means it's going to look how it looks without any animations */
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /* Browsers are optimzed for `opacity` and `transform` only! */
 @keyframes moveInBottom {
   /* Before the animations starts */
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
+
   /* Final state */
   100% {
     opacity: 100;
     /* translate(0) means it's going to look how it looks without any animations */
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
+
 
 /* Pseudo class :link, style elements under special conditions */
 .btn:link,
@@ -142,52 +193,65 @@ body {
   /* Rounded corner */
   border-radius: 10rem;
   /* Always use `display: inline-block` or `display: block`
-   if you want to add some padding or width to an element */
+   if you want to add some padding or width to an element */ 
   /* inline-block is treated as text */
   display: inline-block;
+
   /* transition HAS to be in the initial state! */
   transition: all .2s;
-  position: relative; }
+
+  position: relative;
+}
 
 .btn:hover {
-  transform: translateY(-0.3rem);
+  transform: translateY(-.3rem);
   /* box-shadow: x y blur color */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
 
 /* Relative to the INITIAL LINK state */
 .btn:active {
-  transform: translateY(-0.1rem);
+  transform: translateY(-.1rem);
   /* box-shadow: x y blur color */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
 
 .btn--white {
   background-color: white;
-  color: #777; }
+  color: $color-gray-dark;
+}
 
 /* `after` adds a pseudo-element adds a virtual element right after the element we're selecting */
 .btn::after {
   /* we HAVE to specify `content` and `display`, otherwise the element will NOT appear */
   content: "";
   display: inline-block;
+
   height: 100%;
   width: 100%;
   border-radius: 10rem;
+
   /* Put the after element behind the button. `absolute` positioning requires `relative` for its parent */
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .2s; }
+
+  transition: all .2s;
+}
 
 .btn--white::after {
-  background-color: white; }
+  background-color: white;
+}
 
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   animation: moveInBottom .2s ease-out;
   animation-delay: .75s;
   /* 0% will bet set BEFORE the animation starts */
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
