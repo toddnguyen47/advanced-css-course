@@ -4,6 +4,7 @@ $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 $color-gray-dark: #777;
 $color-gray-white: #fff;
+$color-black: #000;
 
 
 /* Basic Reset */
@@ -52,41 +53,41 @@ body {
   background-size: cover;
   /* top of the image always stays at the top of the container */ 
   background-position: top;
-
   /* Clipping the bg image. Top Left, Top Right, Bot Right, Bot Left */
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-
   /* So child elements can use `top`, `left`, etc., properties */
   position: relative;
-}
 
 
-.header__logo-box {
-  position: absolute;
+  &__logo-box {
+    position: absolute;
   
-  /* These positions are obtained from the parent element that has its position set to `relative` */
-  top: 4rem;
-  left: 4rem;
-}
+    /* These positions are obtained from the parent element that has its position set to `relative` */
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
-}
 
-/* 
- * Center REGARDLESES of viewport width and height
- * `left: 50%` means 50% from the left of the parent element
- */
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
+  &__logo {
+    height: 3.5rem;
+  }
+
+
+  /* 
+   * Center REGARDLESES of viewport width and height
+   * `left: 50%` means 50% from the left of the parent element
+   */
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    
+    /* transform translate() are relative to the CURRENT element */
+    /* translate the element 50% to the top, and 50% to the left */
+    transform: translate(-50%, -50%);
   
-  /* transform translate() are relative to the CURRENT element */
-  /* translate the element 50% to the top, and 50% to the left */
-  transform: translate(-50%, -50%);
-
-  text-align: center;
+    text-align: center;
+  }
 }
 
 .heading-primary {
@@ -96,33 +97,37 @@ body {
 
   /* Removes the shakiness of the animation */
   backface-visibility: hidden;
+
+
+  /*
+  * Block elements:
+  *   - Occupy the entire width that are available to them
+  *   - Create line breaks before and after them
+  */
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    /* animation-iteration-count: 3; */
+    /* animation-delay: 3s; */
+  }
+
+
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-in;
+  }
 }
 
-/*
- * Block elements:
- *   - Occupy the entire width that are available to them
- *   - Create line breaks before and after them
- */
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
 
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-in;
-  /* animation-iteration-count: 3; */
-  /* animation-delay: 3s; */
-}
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-in;
-}
 
 /* Browsers are optimzed for `opacity` and `transform` only! */
 @keyframes moveInLeft {
@@ -183,75 +188,77 @@ body {
 }
 
 
-/* Pseudo class :link, style elements under special conditions */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 1.6rem;
-  padding: 1.5rem 4rem;
-  /* Rounded corner */
-  border-radius: 10rem;
-  /* Always use `display: inline-block` or `display: block`
-   if you want to add some padding or width to an element */ 
-  /* inline-block is treated as text */
-  display: inline-block;
+.btn {
+  /* Pseudo class :link, style elements under special conditions */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 1.5rem 4rem;
+    /* Rounded corner */
+    border-radius: 10rem;
+    /* Always use `display: inline-block` or `display: block`
+    if you want to add some padding or width to an element */ 
+    /* inline-block is treated as text */
+    display: inline-block;
 
-  /* transition HAS to be in the initial state! */
-  transition: all .2s;
+    /* transition HAS to be in the initial state! */
+    transition: all .2s;
 
-  position: relative;
-}
+    position: relative;
+  }
 
-.btn:hover {
-  transform: translateY(-.3rem);
-  /* box-shadow: x y blur color */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
+  &:hover {
+    transform: translateY(-.3rem);
+    /* box-shadow: x y blur color */
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
 
-/* Relative to the INITIAL LINK state */
-.btn:active {
-  transform: translateY(-.1rem);
-  /* box-shadow: x y blur color */
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-}
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
 
-.btn--white {
-  background-color: white;
-  color: $color-gray-dark;
-}
+  /* Relative to the INITIAL LINK state */
+  &:active {
+    transform: translateY(-.1rem);
+    /* box-shadow: x y blur color */
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
 
-/* `after` adds a pseudo-element adds a virtual element right after the element we're selecting */
-.btn::after {
-  /* we HAVE to specify `content` and `display`, otherwise the element will NOT appear */
-  content: "";
-  display: inline-block;
+  &--white {
+    background-color: white;
+    color: $color-gray-dark;
 
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
+    &::after {
+      background-color: white;
+    }
+  }
 
-  /* Put the after element behind the button. `absolute` positioning requires `relative` for its parent */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  /* `after` adds a pseudo-element adds a virtual element right after the element we're selecting */
+  &::after {
+    /* we HAVE to specify `content` and `display`, otherwise the element will NOT appear */
+    content: "";
+    display: inline-block;
 
-  transition: all .2s;
-}
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
 
-.btn--white::after {
-  background-color: white;
-}
+    /* Put the after element behind the button. `absolute` positioning requires `relative` for its parent */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
+    transition: all .2s;
+  }
 
-.btn--animated {
-  animation: moveInBottom .2s ease-out;
-  animation-delay: .75s;
-  /* 0% will bet set BEFORE the animation starts */
-  animation-fill-mode: backwards;
+  &--animated {
+    animation: moveInBottom .2s ease-out;
+    animation-delay: .75s;
+    /* 0% will bet set BEFORE the animation starts */
+    animation-fill-mode: backwards;
+  }
 }
