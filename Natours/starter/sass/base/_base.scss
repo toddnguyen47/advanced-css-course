@@ -1,0 +1,27 @@
+// Low Level Basics
+// Resets, Styles, etc, for HTML and body element selectors
+// Should be partial - file name starts with an underscore
+
+/* Basic Reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+
+html {
+  // Defines what 1rem is
+  /* Browser default is 16px. (10px / 16px) = 62.5% */
+  font-size: 62.5%;
+}
+
+/* Font using INHERITANCE 
+ * Font-family will get inherited by all elements in the body
+ */
+body {
+  /* Borders and padding are no longer added to the height and width of an elem */
+  box-sizing: border-box;
+}

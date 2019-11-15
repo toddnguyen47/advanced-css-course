@@ -1,0 +1,57 @@
+/* Browsers are optimzed for `opacity` and `transform` only! */
+@keyframes moveInLeft {
+  /* Before the animations starts */
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  /* Move to the right a little bit before 100%*/
+  80% {
+    transform: translateX(1rem);
+  }
+
+  /* Final state */
+  100% {
+    opacity: 100;
+    /* translate(0) means it's going to look how it looks without any animations */
+    transform: translate(0);
+  }
+}
+
+/* Browsers are optimzed for `opacity` and `transform` only! */
+@keyframes moveInRight {
+  /* Before the animations starts */
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  /* Move to the right a little bit before 100%*/
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  /* Final state */
+  100% {
+    opacity: 100;
+    /* translate(0) means it's going to look how it looks without any animations */
+    transform: translate(0);
+  }
+}
+
+/* Browsers are optimzed for `opacity` and `transform` only! */
+@keyframes moveInBottom {
+  /* Before the animations starts */
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  /* Final state */
+  100% {
+    opacity: 100;
+    /* translate(0) means it's going to look how it looks without any animations */
+    transform: translate(0);
+  }
+}

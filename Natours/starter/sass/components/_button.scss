@@ -1,0 +1,74 @@
+.btn {
+  /* Pseudo class :link, style elements under special conditions */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 1.5rem 4rem;
+    /* Rounded corner */
+    border-radius: 10rem;
+    /* Always use `display: inline-block` or `display: block`
+    if you want to add some padding or width to an element */ 
+    /* inline-block is treated as text */
+    display: inline-block;
+
+    /* transition HAS to be in the initial state! */
+    transition: all .2s;
+
+    position: relative;
+  }
+
+  &:hover {
+    transform: translateY(-.3rem);
+    /* box-shadow: x y blur color */
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* Relative to the INITIAL LINK state */
+  &:active {
+    transform: translateY(-.1rem);
+    /* box-shadow: x y blur color */
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &--white {
+    background-color: white;
+    color: $color-gray-dark;
+
+    &::after {
+      background-color: white;
+    }
+  }
+
+  /* `after` adds a pseudo-element adds a virtual element right after the element we're selecting */
+  &::after {
+    /* we HAVE to specify `content` and `display`, otherwise the element will NOT appear */
+    content: "";
+    display: inline-block;
+
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+
+    /* Put the after element behind the button. `absolute` positioning requires `relative` for its parent */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transition: all .2s;
+  }
+
+  &--animated {
+    animation: moveInBottom .2s ease-out;
+    animation-delay: .75s;
+    /* 0% will bet set BEFORE the animation starts */
+    animation-fill-mode: backwards;
+  }
+}

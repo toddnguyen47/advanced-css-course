@@ -1,0 +1,52 @@
+// Headers are layouts because each page will have a header
+.header {
+  /* 95% of the viewport height */
+  height: 95vh;
+  /* 2 background image: [a] linear gradient stays on top of [b] the hero picture */
+  background-image:
+    linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8),
+    ),
+    url("../img/hero.jpg");
+  /* `cover` always tries to fit the element inside of the viewport */
+  background-size: cover;
+  /* top of the image always stays at the top of the container */ 
+  background-position: top;
+  /* Clipping the bg image. Top Left, Top Right, Bot Right, Bot Left */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* So child elements can use `top`, `left`, etc., properties */
+  position: relative;
+
+
+  &__logo-box {
+    position: absolute;
+  
+    /* These positions are obtained from the parent element that has its position set to `relative` */
+    top: 4rem;
+    left: 4rem;
+  }
+
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+
+  /* 
+   * Center REGARDLESES of viewport width and height
+   * `left: 50%` means 50% from the left of the parent element
+   */
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    
+    /* transform translate() are relative to the CURRENT element */
+    /* translate the element 50% to the top, and 50% to the left */
+    transform: translate(-50%, -50%);
+  
+    text-align: center;
+  }
+}
