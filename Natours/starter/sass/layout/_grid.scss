@@ -1,5 +1,6 @@
 @include clearfix;
 
+// Always have a column inside of a row
 .row {
   // Use max-width so that if the viewport is smaller than 114rem (1140px),
   // then the row will fill 100% of the available space
@@ -14,13 +15,7 @@
 
   // Attribute selector
   // `^` allows us to select only the strings that start with col-
-  [class ^= "col-"]
-
-
-  .col-1-of-2 {
-    // Can mix units in native calc function
-    // To use a SCSS var in native CSS, use `#{}`
-    width: calc((100% - #{$grid-gutter-horizontal}) / 2.0);
+  [class ^= "col-"] {
     background-color: orangered;
     // Always float to the left for Grid elements
     float: left;
@@ -31,7 +26,30 @@
   }
 
 
+  .col-1-of-2 {
+    // Can mix units in native calc function
+    // To use a SCSS var in native CSS, use `#{}`
+    width: calc((100% - 1.0 * #{$grid-gutter-horizontal}) / 2.0);
+  }
+
+
   .col-1-of-3 {
-    width: calc((100% - 2 * #{$grid-gutter-horizontal}) / 3);
+    width: calc((100% - 2.0 * #{$grid-gutter-horizontal}) / 3.0);
+  }
+
+  .col-2-of-3 {
+    width: calc( 2 * ((100% - 2.0 * #{$grid-gutter-horizontal}) / 3.0) + #{$grid-gutter-horizontal});
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - 3.0 * #{$grid-gutter-horizontal}) / 4.0);
+  }
+
+  .col-2-of-4 {
+    width: calc(2 * ((100% - 3.0 * #{$grid-gutter-horizontal}) / 4.0) + #{$grid-gutter-horizontal} );
+  }
+
+  .col-3-of-4 {
+    width: calc( 3 * ((100% - 3.0 * #{$grid-gutter-horizontal}) / 4.0) + 2 * #{$grid-gutter-horizontal} );
   }
 }
