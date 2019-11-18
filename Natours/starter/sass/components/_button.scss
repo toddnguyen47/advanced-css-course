@@ -4,7 +4,7 @@
   &:visited {
     text-transform: uppercase;
     text-decoration: none;
-    font-size: 1.6rem;
+    font-size: $default-font-size;
     padding: 1.5rem 4rem;
     /* Rounded corner */
     border-radius: 10rem;
@@ -70,5 +70,33 @@
     animation-delay: .75s;
     /* 0% will bet set BEFORE the animation starts */
     animation-fill-mode: backwards;
+  }
+}
+
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: .1rem solid $color-primary;
+    padding: .3rem;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    transform: translateY(-.2rem);
+  }
+
+  &:active {
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0rem);
   }
 }
