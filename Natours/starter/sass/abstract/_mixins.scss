@@ -7,3 +7,13 @@
     clear: both;
   }
 }
+
+
+@mixin text-linear-gradient {
+    // Make the text a nice linear image
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    background-clip: none;
+    color: transparent;
+}
