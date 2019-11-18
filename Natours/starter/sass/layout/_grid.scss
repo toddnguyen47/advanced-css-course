@@ -1,7 +1,8 @@
-@include clearfix;
-
 // Always have a column inside of a row
 .row {
+  // Include clearfix so that the row has a height after elements are collapsed
+  @include clearfix;
+
   // Use max-width so that if the viewport is smaller than 114rem (1140px),
   // then the row will fill 100% of the available space
   max-width: $grid-width;

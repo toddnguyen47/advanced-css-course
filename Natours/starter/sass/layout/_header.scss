@@ -15,7 +15,8 @@
   /* top of the image always stays at the top of the container */ 
   background-position: top;
   /* Clipping the bg image. Top Left, Top Right, Bot Right, Bot Left */
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  -webkit-clip-path:  polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  clip-path:          polygon(0 0, 100% 0, 100% 75%, 0 100%);
   /* So child elements can use `top`, `left`, etc., properties */
   position: relative;
 
