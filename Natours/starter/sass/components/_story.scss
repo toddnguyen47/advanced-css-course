@@ -26,9 +26,39 @@
 
     // Move the shape to the left a bit to give it some space from the text
     transform: translateX(-3rem) skewX(#{$skewed-deg-medium}deg);
+
+    position: relative;
   }
 
   &__image {
     height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all .5s;
+  }
+
+  &__caption {
+    @include center-block-elem;
+
+    position: absolute;
+    color: $color-white;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    transform: translate(-50%, 20%);
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__image {
+    transform: translateX(-3rem) scale(1.0);
+    backface-visibility: hidden;
+    filter: blur(.3rem) brightness(80%);
   }
 }
