@@ -20,7 +20,7 @@
     // To prevent the image from overlapping the parent
     overflow: hidden;
 
-    border-radius: .3rem;
+    border-radius: $default-box-radius;
     box-shadow: $default-box-shadow;
 
     &--front {
