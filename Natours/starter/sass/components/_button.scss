@@ -1,4 +1,5 @@
 .btn {
+  &,
   /* Pseudo class :link, style elements under special conditions */
   &:link,
   &:visited {
@@ -17,6 +18,10 @@
     transition: all .2s;
 
     position: relative;
+
+    // Change for <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -31,7 +36,9 @@
   }
 
   /* Relative to the INITIAL LINK state */
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-.1rem);
     /* box-shadow: x y blur color */
     box-shadow: 0 .5rem 1rem rgba($color-black, .2);
